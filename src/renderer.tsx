@@ -14,6 +14,7 @@ export const SelectColumnRenderer = (h: any, {model, prop, column}: any): any[] 
     let col = column as SelectConfig;
     let val = model[prop];
     if (col.labelKey && col.sourceLookup) {
+        if (col.sourceLookup[val] === undefined) return null
         val = col.sourceLookup[val][col.labelKey];
     }
     return [
